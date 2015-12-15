@@ -30,7 +30,7 @@ The database structure is defined in qie10peds/models.py
 `clean.py`: Used to remove the 2 primary keys from the data base (QIEcard & BECrate)
 and all of their dependents.  Basically, its a fresh start. 
 
-`buildHcal`: Used to initialize the database.  This currently has a number 
+`buildHcal.py`: Used to initialize the database.  This currently has a number 
 of hard coded mappings that are not expected to change, like the ROBOX adapter board 
 <-> winchester mapping, but could cause problems in the future.  
 
