@@ -110,6 +110,9 @@ class BECrate( models.Model ) :
 
     fiber = models.IntegerField(default=1)
 
+    def __str__(self):
+        return "crate: {0} ; slot: {1} ; fiber: {2}".format(self.crate,self.slot,self.fiber)
+
 ###############################################################
 ###############################################################
 ###############################################################
@@ -141,23 +144,6 @@ class FECrate( models.Model ) :
 
     crate = models.IntegerField(default=0)
     slot = models.IntegerField(default=1)
-
-###############################################################
-###############################################################
-###############################################################
-###############################################################
-###############################################################
-###############################################################
-
-class BECrate( models.Model ) : 
-
-    ## keys
-    qie_card = models.ForeignKey( QIEcard , on_delete=models.CASCADE )
-    tag = models.ForeignKey( Tag , on_delete=models.CASCADE ) #, related_name='BECrateFromTag' )
-
-    BEcrate = models.IntegerField(default=0)
-    BEslot = models.IntegerField(default=1)
-    uHTRreciever = models.IntegerField(default=0)
 
 ###############################################################
 ###############################################################

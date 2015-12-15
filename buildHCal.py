@@ -24,15 +24,21 @@ for i in inputQIEdata :
   QIEinfo.append( { "sn":tempSN , "uniqueID":tempUniqueID } )
 ############################################
 
-def createCard( tag_ , sn_ = "101" , uniqueID_ = "0x78000000 0xb9ff7b70" ) : 
+def createCard( tag_ , index_ , sn_ = "101" , uniqueID_ = "0x78000000 0xb9ff7b70" ) : 
 
     c = QIEcard( uniqueID=uniqueID_ , sn = sn_ )
     c.save()
 
     for i in range(24) : 
 
-        be_link = BECrate.objects.all()[c.pk*6+24/4]      
-        q = QIE(qie_card=c,be_crate=be_link,tab=tab_,channelIndex=i+1)
+        # print "c.pk",index_
+        # print "crate",50+index_/48
+        # print "slot",((index_%48)/4) + 1
+        # print "fiber",(index_%4)*6+i/4
+
+        be_link = BECrate.objects.filter(crate=50+index_/48,slot=((index_%48)/4)+1,fiber=(index_%4)*6+i/4)[0]
+
+        q = QIE(qie_card=c,be_crate=be_link,tag=tag_,channelIndex=i+1)
         q.save()
 
         ped = Pedestal(qie=q,
@@ -130,12 +136,12 @@ else :
 for c in range( 3 ) :
   for s in range( 12 ) : 
     for f in range( 24 ) : 
-      BEC = BECrate( crate = c , slot = s , fiber = f )
+      BEC = BECrate( crate = 50+c , slot = s + 1 , fiber = f )
       BEC.save()
 
 #### create dummy QIE cards
 for i in range( 144 ) :
-    createCard( t , QIEinfo[i]["sn"] , QIEinfo[i]["uniqueID"] )
+    createCard( t , i , QIEinfo[i]["sn"] , QIEinfo[i]["uniqueID"] )
 
 #### dummy PMT boxes
 for phi in range(18) : 

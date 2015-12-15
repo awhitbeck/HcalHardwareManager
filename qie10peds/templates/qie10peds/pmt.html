@@ -18,15 +18,18 @@
   <td>PMT Position</td> 
   <td>Anode</td>
   <td>PMT Conn</td>
-  <td>Sig. Coax. PMT</td> 
+<!--  <td>Sig. Coax. PMT</td> 
   <td>Sig. Coax. QIE</td>
   <td>Ref. Coax. PMT</td>
-  <td>Ref. Coax. QIE</td>
+  <td>Ref. Coax. QIE</td> //-->
   <td>Unique ID</td>
   <td>QIE Conn</td>
   <td>Chan. Index</td>
+  <td>BE Crate </td>
+  <td>BE Slot </td>
+  <td>BE Fiber </td>
+</tr>
 
-</td>
 {% for pmt in pmts %}
 <tr>
   <td> {{pmt.side}} </td>
@@ -42,13 +45,16 @@
   <!-- <td> {{ pmt.boxPosition|modulo:8|add:1 }} </td>  //-->
   <td> {{pmt.anode}} </td>
   <td> {{pmt.WinchestorConn}} </td>
-  <td> {{pmt.SigCoaxPMT}} </td>
+<!--  <td> {{pmt.SigCoaxPMT}} </td>
   <td> {{pmt.SigCoaxQIE}} </td>
   <td> {{pmt.RefCoaxPMT}} </td>
-  <td> {{pmt.RefCoaxQIE}} </td>
+  <td> {{pmt.RefCoaxQIE}} </td> //-->
   <td> {{pmt.qie.qie_card.uniqueID}} </td>
   <td> {{pmt.WinchestorPCBconn}} </td>
   <td> {{pmt.qie.channelIndex}} </td>
+  <td> {{pmt.qie.be_crate.crate}} </td>
+  <td> {{pmt.qie.be_crate.slot}} </td>
+  <td> {{pmt.qie.be_crate.fiber}} </td>
 
 </tr>
 {% endfor %}
