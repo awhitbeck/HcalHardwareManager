@@ -32,11 +32,11 @@ def createCard( tag_ , index_ , sn_ = "101" , uniqueID_ = "0x78000000 0xb9ff7b70
     for i in range(24) : 
 
         # print "c.pk",index_
-        # print "crate",50+index_/48
+        # print "crate",51+index_/48
         # print "slot",((index_%48)/4) + 1
         # print "fiber",(index_%4)*6+i/4
 
-        be_link = BECrate.objects.filter(crate=50+index_/48,slot=((index_%48)/4)+1,fiber=(index_%4)*6+i/4)[0]
+        be_link = BECrate.objects.filter(crate=51+index_/48,slot=((index_%48)/4)+1,fiber=(index_%4)*6+i/4)[0]
 
         q = QIE(qie_card=c,be_crate=be_link,tag=tag_,channelIndex=i+1)
         q.save()
@@ -136,7 +136,7 @@ else :
 for c in range( 3 ) :
   for s in range( 12 ) : 
     for f in range( 24 ) : 
-      BEC = BECrate( crate = 50+c , slot = s + 1 , fiber = f )
+      BEC = BECrate( crate = 51+c , slot = s + 1 , fiber = f )
       BEC.save()
 
 #### create dummy QIE cards
