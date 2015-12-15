@@ -19,11 +19,11 @@ Then go to http://127.0.0.1:8080/admin/
 
 ## Database structure
 
-The database structure is defined in qie10peds/models.py 
+The database structure is defined in `qie10peds/models.py` 
 
 ## Web views
 
-The database structure is defined in qie10peds/models.py 
+The views are listed in `qie10peds/views.py`.  But currently, not all of them work.
 
 ## Scripts
 
