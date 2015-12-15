@@ -1,0 +1,31 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'qie10peds/style.css' %}" />
+
+<h1 align="center"> Card Overview <h1>
+
+<form action="{% url 'qie10peds:edithmap' %}" method="post">
+{% csrf_token %}
+
+<div class="CSSTableGenerator" align="center">
+<input type="text" name="tag">
+<input type="submit" value="editHMAP">
+<table style="width:300px">
+<tr align="center">
+  <td> Unique ID </td>
+  <td> Crate No. </td>
+  <td> Slot No. </td>
+</tr>
+{% for card in cards %}
+<tr align="center">
+  <td> {{card.1}} </td>
+  <td> <input type="text" size=10 name="crate{{card.0}}" value="{{card.2}}" ></td>
+  <td> <input type="text" size=10 name="slot{{card.0}}" value="{{card.3}}" ></td>
+  <td> <a href="{% url 'qie10peds:peds' card.0 'default' %}">peds</a> </td>
+</tr>
+
+{% endfor %}
+
+</table>
+</div>
+</form>

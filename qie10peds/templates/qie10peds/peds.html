@@ -1,0 +1,51 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'qie10peds/style.css' %}" />
+
+<h1 align="center"> Pedestals - {{uniqueID}} </h1>
+
+<form action="{% url 'qie10peds:peds' card_pk tag %}" method="post">
+tag:<input type="text" name="tag">
+<input type="submit" value="switch tag">
+</form>
+
+<div class="CSSTableGenerator" align="center" style="height:200px">
+<table>
+<tr align="center">
+  <td> channel index </td>
+{% for i in index %}
+  <td> {{i}} </td>
+{% endfor %}
+</tr>
+<tr align="center">
+  <td> comm ped DAC </td>
+{% for dac in commPeds %}
+  <td> {{dac}} </td>
+{% endfor %}
+</tr>
+<tr align="center">
+  <td> cap 1 ped DAC </td>
+{% for dac in cap1Peds %}
+  <td> {{dac}} </td>
+{% endfor %}
+</tr>
+<tr align="center">
+  <td> cap 2 ped DAC </td>
+{% for dac in cap2Peds %}
+  <td> {{dac}} </td>
+{% endfor %}
+</tr>
+<tr align="center">
+  <td> cap 3 ped DAC </td>
+{% for dac in cap3Peds %}
+  <td> {{dac}} </td>
+{% endfor %}
+</tr>
+<tr align="center">
+  <td> cap 4 ped DAC </td>
+{% for dac in cap4Peds %}
+  <td> {{dac}} </td>
+{% endfor %}
+</tr>
+</table>
+</div>

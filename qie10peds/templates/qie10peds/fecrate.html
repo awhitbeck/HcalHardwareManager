@@ -1,0 +1,25 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'qie10peds/style.css' %}" />
+
+<h1> Crate Display</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+<div class="CSSTableGenerator" align="center" style="height:200px">
+<table>
+<tr align="center">
+  <td> FE crate </td>
+  <td> FE slot </td>
+  <td> QIE card ID </td>
+</tr>
+{% for cs in cards %}
+<tr>
+  <td> {{cs.1}} </td>
+  <td> {{cs.2}} </td>
+  <td> {{cs.0}} </td>
+</tr>
+{% endfor %}
+</table>
+</div>

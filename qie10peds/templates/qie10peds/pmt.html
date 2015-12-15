@@ -1,0 +1,56 @@
+{% load staticfiles %}
+{% load arithmetic %}
+<link rel="stylesheet" type="text/css" href="{% static 'qie10peds/style.css' %}" />
+
+<h1 align="center"> HF Hardware Mapping </h1>
+
+<div class="CSSTableGenerator" align="center" style="height:200px">
+<table>
+<tr align="center">
+  <td>Side</td>
+  <td>iEta</td>
+  <td>iPhi</td> 
+  <td>dPhi</td>
+  <td>det</td>
+  <td>Wedge</td>
+  <td>Box Type</td>
+  <td>Depth</td>
+  <td>PMT Position</td> 
+  <td>Anode</td>
+  <td>PMT Conn</td>
+  <td>Sig. Coax. PMT</td> 
+  <td>Sig. Coax. QIE</td>
+  <td>Ref. Coax. PMT</td>
+  <td>Ref. Coax. QIE</td>
+  <td>Unique ID</td>
+  <td>QIE Conn</td>
+  <td>Chan. Index</td>
+
+</td>
+{% for pmt in pmts %}
+<tr>
+  <td> {{pmt.side}} </td>
+  <td> {{pmt.iEta}} </td>
+  <td> {{pmt.iPhi}} </td>
+  <td> {{pmt.dPhi}} </td>
+  <td> {{pmt.subDet}} </td>
+  <td> {{pmt.phiSector}} </td>
+  <td> {{pmt.boxType}} </td>
+  <!-- <td> {{ pmt.iDepth }} </td> //-->
+  <td> {{ pmt.iDepth|add:-1|modulo:2|add:1 }} </td> 
+  <td> {{ pmt.boxPosition }} </td> 
+  <!-- <td> {{ pmt.boxPosition|modulo:8|add:1 }} </td>  //-->
+  <td> {{pmt.anode}} </td>
+  <td> {{pmt.WinchestorConn}} </td>
+  <td> {{pmt.SigCoaxPMT}} </td>
+  <td> {{pmt.SigCoaxQIE}} </td>
+  <td> {{pmt.RefCoaxPMT}} </td>
+  <td> {{pmt.RefCoaxQIE}} </td>
+  <td> {{pmt.qie.qie_card.uniqueID}} </td>
+  <td> {{pmt.WinchestorPCBconn}} </td>
+  <td> {{pmt.qie.channelIndex}} </td>
+
+</tr>
+{% endfor %}
+</table>
+</div>
