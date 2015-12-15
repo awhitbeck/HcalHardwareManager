@@ -8,7 +8,7 @@ to say the least.
 
 <pre>
 git clone https://github.com/awhitbeck/HcalHardwareManager.git
-python manage.py makemigrations
+python manage.py makemigrations qie10peds
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver 8080
